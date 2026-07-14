@@ -3,134 +3,689 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casa de Perainda - Oportunidade de Investimento</title>
-  <link rel="stylesheet" href="/styles.css">
+  <title>Casa de Perainda — Investimento em Hospedagem Luxury</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --primary: #0043a8;
+      --accent: #00a8d8;
+      --text: #1a1a1a;
+      --text-light: #666;
+      --bg: #ffffff;
+      --bg-light: #fafafa;
+      --border: #e5e5e5;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* Header */
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 1000;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+    }
+
+    nav a {
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--text-light);
+      transition: color 0.3s;
+      letter-spacing: 0.5px;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5f9fc 0%, #eef7fb 100%);
+      text-align: center;
+      padding: 60px 24px;
+    }
+
+    .hero-content h1 {
+      font-size: 56px;
+      font-weight: 300;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: var(--text-light);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 300;
+    }
+
+    .cta-primary {
+      display: inline-block;
+      padding: 14px 40px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      border: 1px solid var(--primary);
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .cta-primary:hover {
+      background: transparent;
+      color: var(--primary);
+    }
+
+    /* Section */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    .section-header {
+      max-width: 600px;
+      margin-bottom: 60px;
+    }
+
+    .section-header h2 {
+      font-size: 42px;
+      font-weight: 300;
+      margin-bottom: 20px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-header p {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    /* About */
+    .about {
+      background: var(--bg-light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+
+    .about-stats {
+      display: grid;
+      gap: 40px;
+    }
+
+    .stat {
+      border-left: 2px solid var(--accent);
+      padding-left: 24px;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light);
+    }
+
+    /* Highlights */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .highlight {
+      padding: 0;
+    }
+
+    .highlight h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text);
+    }
+
+    .highlight p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* Gallery */
+    .gallery {
+      background: var(--bg);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--border);
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      padding: 16px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* Performance */
+    .performance {
+      background: var(--bg-light);
+    }
+
+    .performance-content {
+      max-width: 800px;
+    }
+
+    .timeline {
+      margin-top: 60px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-year {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .timeline-text {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    /* CTA Section */
+    .cta-block {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: white;
+      padding: 100px 24px;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    .cta-block h2 {
+      font-size: 42px;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+
+    .cta-block p {
+      font-size: 16px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+    }
+
+    .cta-secondary {
+      display: inline-block;
+      padding: 14px 40px;
+      background: white;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      border: 1px solid white;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .cta-secondary:hover {
+      background: transparent;
+      color: white;
+    }
+
+    /* Contact */
+    .contact {
+      background: var(--bg);
+    }
+
+    .contact-form {
+      max-width: 500px;
+      margin-top: 60px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      font-family: inherit;
+      font-size: 14px;
+      background: var(--bg);
+      color: var(--text);
+      transition: border-color 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .contact-info {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .contact-info strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text);
+      color: white;
+      padding: 60px 24px;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    footer p {
+      margin-bottom: 12px;
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { display: none; }
+
+      .hero-content h1 { font-size: 36px; }
+      .hero-content p { font-size: 16px; }
+
+      .about-grid,
+      .highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .section {
+        padding: 60px 24px;
+      }
+
+      .section-header h2 {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <div class="nav-brand">
-        <h1>Casa de Perainda</h1>
+  <!-- Header -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-group">
+        <img src="/logo.jpeg" alt="Casa de Perainda" class="logo-img">
+        <div class="logo-text">Perainda</div>
       </div>
-      <div class="nav-links">
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#oportunidade">Oportunidade</a>
         <a href="#galeria">Galeria</a>
-        <a href="#investimento">Investimento</a>
-        <a href="#agendamento">Agendamento</a>
-      </div>
+        <a href="#agendamento">Contato</a>
+      </nav>
     </div>
-  </nav>
+  </header>
 
+  <!-- Hero -->
   <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h2>Oportunidade Exclusiva de Investimento</h2>
-        <p>Conforto, exclusividade e potencial de retorno em uma das vilas mais charmosas de Trancoso</p>
-        <a href="#agendamento" class="cta-button">Agendar Conversa</a>
+    <div class="hero-content">
+      <h1>Casa de Perainda</h1>
+      <p>Oportunidade Premium de Investimento em Hospedagem de Luxo</p>
+      <button class="cta-primary" onclick="document.getElementById('agendamento').scrollIntoView()">Converse Conosco</button>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="about section" id="sobre">
+    <div class="section-header">
+      <h2>Uma Propriedade Consolidada</h2>
+      <p>Desde 2016, a Casa de Perainda estabeleceu-se como referência em hospedagem luxury em Trancoso, com histórico comprovado de ocupação elevada e satisfação de hóspedes.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Localizada em Trancoso, Bahia, a propriedade combina 9 acomodações distintas em uma vila charmosa, reservada e aconchegante. Cada unidade (Casa Areia, Casa Concha, Casa Coral, Casa Mar, Casa Tartaruga, Suíte Ancora, Suíte Cavalo Marinho, Suíte Estrela do Mar e Suíte Marimbá) foi cuidadosamente projetada para oferecer conforto premium.</p>
+        <p>O modelo de negócio híbrido — operação hoteleira com unidades de temporada — proporciona diversificação de renda e reduz riscos de ocupação.</p>
+      </div>
+
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-number">8 anos</div>
+          <div class="stat-label">De Operação Consolidada</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">9</div>
+          <div class="stat-label">Unidades Independentes</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">Premium</div>
+          <div class="stat-label">Avaliações Consistentes</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="investimento" class="investment-section">
-    <div class="container">
-      <h2>Sobre a Casa de Perainda</h2>
-      <div class="investment-content">
-        <p>O conforto e o aconchego de uma hospedagem íntima e diferente de tudo o que você já experimentou.</p>
-        <p>Considerada uma das vilas mais charmosas de Trancoso, a Perainda é um lugar reservado, exclusivo e aconchegante, com potencial comprovado de retorno financeiro para investidores.</p>
+  <!-- Oportunidade -->
+  <section class="section" id="oportunidade">
+    <div class="section-header">
+      <h2>Por Que Investir</h2>
+      <p>A Casa de Perainda representa uma oportunidade única de alocação de capital em ativo tangível com geração de fluxo de caixa comprovado.</p>
+    </div>
 
-        <div class="features">
-          <div class="feature-card">
-            <h3>Localização Premium</h3>
-            <p>Trancoso, Bahia - um dos destinos turísticos mais procurados do Brasil</p>
-          </div>
-          <div class="feature-card">
-            <h3>Múltiplas Acomodações</h3>
-            <p>9 unidades independentes: Casa Areia, Casa Concha, Casa Coral, Casa Mar, Casa Tartaruga, Suíte Ancora, Suíte Cavalo Marinho, Suíte Estrela do Mar e Suíte Marimbá</p>
-          </div>
-          <div class="feature-card">
-            <h3>Histórico de Ocupação</h3>
-            <p>Operação consolidada com alta taxa de ocupação e reviews positivos</p>
-          </div>
-        </div>
+    <div class="highlights">
+      <div class="highlight">
+        <h3>Localização Estratégica</h3>
+        <p>Trancoso é dos destinos turísticos mais procurados do Brasil, com demanda constante de hospedagem premium.</p>
+      </div>
+      <div class="highlight">
+        <h3>Modelo Resiliente</h3>
+        <p>Combinação de operação hoteleira com aluguel de temporada reduz riscos e maximiza ocupação.</p>
+      </div>
+      <div class="highlight">
+        <h3>Gestão Profissional</h3>
+        <p>Equipes experientes e processos consolidados garantem operação eficiente e crescimento contínuo.</p>
+      </div>
+      <div class="highlight">
+        <h3>Segurança Jurídica</h3>
+        <p>Documentação completa: habite-se, certidões de regularização e todas as obrigações legais em dia.</p>
       </div>
     </div>
   </section>
 
-  <section id="galeria" class="gallery-section">
-    <div class="container">
-      <h2>Galeria de Fotos</h2>
-      <div id="galleryContainer" class="gallery-grid">
-        <!-- Preenchido dinamicamente -->
+  <!-- Galeria -->
+  <section class="gallery section" id="galeria">
+    <div class="section-header">
+      <h2>Conheça as Acomodações</h2>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="/images/Casa Areia/Casa Areia 15.jpg" alt="Casa Areia">
+        <div class="gallery-label">Casa Areia</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/Casa Coral/Casa Coral 01.jpg" alt="Casa Coral">
+        <div class="gallery-label">Casa Coral</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/Casa Mar/Casa Mar 01.jpg" alt="Casa Mar">
+        <div class="gallery-label">Casa Mar</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/Suíte Ancora/Suíte Ancora 01.jpg" alt="Suíte Ancora">
+        <div class="gallery-label">Suíte Ancora</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/Suíte Cavalo Marinho/Suíte Cavalo Marinho 01.jpg" alt="Suíte Cavalo Marinho">
+        <div class="gallery-label">Suíte Cavalo Marinho</div>
+      </div>
+      <div class="gallery-item">
+        <img src="/images/Suíte Estrela do Mar/Suíte Estrela do Mar 01.jpg" alt="Suíte Estrela do Mar">
+        <div class="gallery-label">Suíte Estrela do Mar</div>
       </div>
     </div>
   </section>
 
-  <section id="agendamento" class="booking-section">
-    <div class="container">
-      <h2>Agendar Conversa Sobre Investimento</h2>
-      <form name="agendamento" method="POST" netlify-honeypot="bot-field" data-netlify="true" class="booking-form">
-        <input type="hidden" name="form-name" value="agendamento">
-        <p hidden><input name="bot-field"></p>
+  <!-- Performance -->
+  <section class="performance section">
+    <div class="section-header">
+      <h2>Histórico de Crescimento</h2>
+      <p>Desde 2016, a propriedade demonstra crescimento consistente, com recuperação rápida pós-pandemia e movimento ascendente em 2022.</p>
+    </div>
 
-        <div class="form-group">
-          <label for="nome">Nome *</label>
-          <input type="text" id="nome" name="nome" required>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email *</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-
-        <div class="form-group">
-          <label for="telefone">Telefone *</label>
-          <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
-        </div>
-
-        <div class="form-group">
-          <label for="horario">Melhor horário para contato *</label>
-          <select id="horario" name="horario" required>
-            <option value="">Selecione um horário</option>
-            <option value="09-12">09h - 12h</option>
-            <option value="12-15">12h - 15h</option>
-            <option value="15-18">15h - 18h</option>
-            <option value="18-20">18h - 20h</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="mensagem">Mensagem (opcional)</label>
-          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre seu interesse..."></textarea>
-        </div>
-
-        <button type="submit" class="submit-button">Enviar Solicitação e Abrir WhatsApp</button>
-      </form>
-      <p class="form-note">Você será direcionado para o WhatsApp após enviar o formulário</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2016</div>
+        <div class="timeline-text">Hotel abre as portas em junho com período inicial de ajustes operacionais.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2017–2019</div>
+        <div class="timeline-text">Consolidação operacional com manutenções programadas e expansão gradual de receitas.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-text">Fechamento temporário por Covid-19. Reabertura em agosto com adoção de novos protocolos.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-text">Ano pós-pandemia com novo gerente e retomada forte de operações sem fechamentos programados.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-text">Super aquecimento do setor de turismo com receitas em patamares históricos.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023+</div>
+        <div class="timeline-text">Mercado normalizando com oportunidades contínuas em turismo internacional.</div>
+      </div>
     </div>
   </section>
 
+  <!-- CTA -->
+  <section class="cta-block">
+    <h2>Pronto para Explorar Esta Oportunidade?</h2>
+    <p>Agende uma conversa com nosso time para conhecer detalhes do investimento</p>
+    <button class="cta-secondary" onclick="document.getElementById('agendamento').scrollIntoView()">Agendar Conversa</button>
+  </section>
+
+  <!-- Contato -->
+  <section class="contact section" id="agendamento">
+    <div class="section-header">
+      <h2>Entre em Contato</h2>
+    </div>
+
+    <form class="contact-form" name="contato" method="POST" netlify>
+      <input type="hidden" name="form-name" value="contato">
+
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" name="nome" required>
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Telefone</label>
+        <input type="tel" name="telefone" placeholder="(11) 99999-9999" required>
+      </div>
+
+      <div class="form-group">
+        <label>Melhor Horário</label>
+        <select name="horario" required>
+          <option value="">Selecione...</option>
+          <option value="09-12">09h - 12h</option>
+          <option value="12-15">12h - 15h</option>
+          <option value="15-18">15h - 18h</option>
+          <option value="18-20">18h - 20h</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Mensagem</label>
+        <textarea name="mensagem"></textarea>
+      </div>
+
+      <button type="submit" class="cta-primary">Enviar Solicitação</button>
+
+      <div class="contact-info">
+        <strong>Profissional Responsável</strong>
+        Adalberto Sanches
+        <br>CRECI: 25330
+        <br><strong>A10N Investimentos Imobiliários</strong>
+      </div>
+    </form>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <div class="container">
-      <p>&copy; 2024 Casa de Perainda. Todos os direitos reservados.</p>
-    </div>
+    <p>&copy; 2026 Casa de Perainda. Todos os direitos reservados.</p>
+    <p>Oportunidade exclusiva para clientes qualificados</p>
   </footer>
 
-  <script src="/gallery.js"></script>
   <script>
-    // Interceptar envio do formulário para redirecionar ao WhatsApp
-    document.querySelector('.booking-form').addEventListener('submit', function(e) {
+    document.querySelector('form').addEventListener('submit', function(e) {
       setTimeout(() => {
-        const nome = document.getElementById('nome').value;
-        const email = document.getElementById('email').value;
-        const telefone = document.getElementById('telefone').value;
-        const horario = document.getElementById('horario').value;
-        const mensagem = document.getElementById('mensagem').value;
+        const nome = document.querySelector('input[name="nome"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+        const telefone = document.querySelector('input[name="telefone"]').value;
+        const horario = document.querySelector('select[name="horario"]').value;
+        const mensagem = document.querySelector('textarea[name="mensagem"]').value;
 
-        const whatsappNumber = '5511941814004';
-        const whatsappMessage = `Olá! Meu nome é ${nome}.\n\nGostaria de agendar uma conversa sobre a oportunidade de investimento na Casa de Perainda.\n\nMeus dados:\nEmail: ${email}\nTelefone: ${telefone}\nMelhor horário: ${horario}\n\n${mensagem ? 'Mensagem: ' + mensagem : ''}`;
+        const whatsappMessage = `Olá! Meu nome é ${nome}.\n\nTenho interesse em conhecer mais sobre a oportunidade de investimento na Casa de Perainda.\n\nEmail: ${email}\nTelefone: ${telefone}\nMelhor horário: ${horario}\n\n${mensagem ? 'Mensagem: ' + mensagem : ''}`;
 
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappUrl, '_blank');
-      }, 1000);
+        window.open(`https://wa.me/5511941814004?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+      }, 500);
     });
   </script>
 </body>
