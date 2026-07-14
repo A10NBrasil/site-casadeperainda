@@ -1,0 +1,17 @@
+{
+  "senhaAdmin": "perainda2024",
+  "clientes": [
+    {
+      "nome": "Dazio Vasconselos",
+      "celular": "5516981034545"
+    },
+    {
+      "nome": "Alexandre Bacelar",
+      "celular": "5511985241108"
+    },
+    {
+      "nome": "Teste",
+      "celular": "5511999999999"
+    }
+  ]
+}

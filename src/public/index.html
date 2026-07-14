@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa de Perainda - Oportunidade de Investimento</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-brand">
+        <h1>Casa de Perainda</h1>
+      </div>
+      <div class="nav-links">
+        <a href="#galeria">Galeria</a>
+        <a href="#investimento">Investimento</a>
+        <a href="#agendamento">Agendamento</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h2>Oportunidade Exclusiva de Investimento</h2>
+        <p>Conforto, exclusividade e potencial de retorno em uma das vilas mais charmosas de Trancoso</p>
+        <a href="#agendamento" class="cta-button">Agendar Conversa</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="investimento" class="investment-section">
+    <div class="container">
+      <h2>Sobre a Casa de Perainda</h2>
+      <div class="investment-content">
+        <p>O conforto e o aconchego de uma hospedagem íntima e diferente de tudo o que você já experimentou.</p>
+        <p>Considerada uma das vilas mais charmosas de Trancoso, a Perainda é um lugar reservado, exclusivo e aconchegante, com potencial comprovado de retorno financeiro para investidores.</p>
+
+        <div class="features">
+          <div class="feature-card">
+            <h3>Localização Premium</h3>
+            <p>Trancoso, Bahia - um dos destinos turísticos mais procurados do Brasil</p>
+          </div>
+          <div class="feature-card">
+            <h3>Múltiplas Acomodações</h3>
+            <p>9 unidades independentes: Casa Areia, Casa Concha, Casa Coral, Casa Mar, Casa Tartaruga, Suíte Ancora, Suíte Cavalo Marinho, Suíte Estrela do Mar e Suíte Marimbá</p>
+          </div>
+          <div class="feature-card">
+            <h3>Histórico de Ocupação</h3>
+            <p>Operação consolidada com alta taxa de ocupação e reviews positivos</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeria" class="gallery-section">
+    <div class="container">
+      <h2>Galeria de Fotos</h2>
+      <div id="galleryContainer" class="gallery-grid">
+        <!-- Preenchido dinamicamente -->
+      </div>
+    </div>
+  </section>
+
+  <section id="agendamento" class="booking-section">
+    <div class="container">
+      <h2>Agendar Conversa Sobre Investimento</h2>
+      <form name="agendamento" method="POST" netlify-honeypot="bot-field" data-netlify="true" class="booking-form">
+        <input type="hidden" name="form-name" value="agendamento">
+        <p hidden><input name="bot-field"></p>
+
+        <div class="form-group">
+          <label for="nome">Nome *</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefone">Telefone *</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999" required>
+        </div>
+
+        <div class="form-group">
+          <label for="horario">Melhor horário para contato *</label>
+          <select id="horario" name="horario" required>
+            <option value="">Selecione um horário</option>
+            <option value="09-12">09h - 12h</option>
+            <option value="12-15">12h - 15h</option>
+            <option value="15-18">15h - 18h</option>
+            <option value="18-20">18h - 20h</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="mensagem">Mensagem (opcional)</label>
+          <textarea id="mensagem" name="mensagem" rows="4" placeholder="Conte um pouco sobre seu interesse..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">Enviar Solicitação e Abrir WhatsApp</button>
+      </form>
+      <p class="form-note">Você será direcionado para o WhatsApp após enviar o formulário</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Casa de Perainda. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="/gallery.js"></script>
+  <script>
+    // Interceptar envio do formulário para redirecionar ao WhatsApp
+    document.querySelector('.booking-form').addEventListener('submit', function(e) {
+      setTimeout(() => {
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const telefone = document.getElementById('telefone').value;
+        const horario = document.getElementById('horario').value;
+        const mensagem = document.getElementById('mensagem').value;
+
+        const whatsappNumber = '5511941814004';
+        const whatsappMessage = `Olá! Meu nome é ${nome}.\n\nGostaria de agendar uma conversa sobre a oportunidade de investimento na Casa de Perainda.\n\nMeus dados:\nEmail: ${email}\nTelefone: ${telefone}\nMelhor horário: ${horario}\n\n${mensagem ? 'Mensagem: ' + mensagem : ''}`;
+
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(whatsappUrl, '_blank');
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "casa-de-perainda",
+  "version": "1.0.0",
+  "description": "Site de investimento - Casa de Perainda",
+  "main": "index.js",
+  "scripts": {
+    "build": "mkdir -p dist && cp -r src/public/* dist/ 2>/dev/null || true",
+    "dev": "netlify dev"
+  },
+  "dependencies": {
+    "crypto": "builtin"
+  }
+}

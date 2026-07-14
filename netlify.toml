@@ -1,0 +1,13 @@
+[build]
+command = "npm run build"
+publish = "dist"
+functions = "netlify/functions"
+edge_functions = "netlify/edge-functions"
+
+[functions]
+external_node_modules = ["crypto"]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
