@@ -6,8 +6,5 @@
   "scripts": {
     "build": "mkdir -p dist && cp -r src/public/* dist/ 2>/dev/null || true",
     "dev": "netlify dev"
-  },
-  "dependencies": {
-    "crypto": "builtin"
   }
 }
