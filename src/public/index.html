@@ -10,6 +10,9 @@
     :root {
       --primary: #0043a8;
       --accent: #00a8d8;
+      --gold: #b8965a;
+      --dark: #0e1116;
+      --dark-card: #1a2230;
       --text: #1a1a1a;
       --text-light: #666;
       --bg: #ffffff;
@@ -50,18 +53,24 @@
       gap: 12px;
     }
 
-    .logo-img {
-      width: 44px;
+    .logo-perainda {
       height: 44px;
+      width: auto;
       object-fit: contain;
+      display: block;
     }
 
-    .logo-text {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--primary);
+    .logo-divider {
+      width: 1px;
+      height: 28px;
+      background: var(--border);
+    }
+
+    .logo-a10n {
+      height: 30px;
+      width: auto;
+      object-fit: contain;
+      display: block;
     }
 
     nav {
@@ -83,22 +92,98 @@
 
     /* Hero */
     .hero {
-      min-height: 90vh;
+      position: relative;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #f5f9fc 0%, #eef7fb 100%);
       text-align: center;
-      padding: 60px 24px;
+      padding: 140px 24px 80px;
+      overflow: hidden;
+      color: #fff;
+      background: var(--dark);
+    }
+
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: heroFade 36s infinite;
+    }
+
+    .hero-slide:nth-child(1) { animation-delay: 0s; }
+    .hero-slide:nth-child(2) { animation-delay: 6s; }
+    .hero-slide:nth-child(3) { animation-delay: 12s; }
+    .hero-slide:nth-child(4) { animation-delay: 18s; }
+    .hero-slide:nth-child(5) { animation-delay: 24s; }
+    .hero-slide:nth-child(6) { animation-delay: 30s; }
+
+    @keyframes heroFade {
+      0%   { opacity: 0; }
+      4%   { opacity: 1; }
+      15%  { opacity: 1; }
+      19%  { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-slide { animation: none; opacity: 0; }
+      .hero-slide:first-child { opacity: 1; }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,14,20,0.35) 0%, rgba(10,14,20,0.45) 45%, rgba(10,14,20,0.82) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      font-weight: 500;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.5);
     }
 
     .hero-content h1 {
-      font-size: 56px;
+      font-size: 64px;
       font-weight: 300;
       letter-spacing: -1px;
-      margin-bottom: 20px;
-      line-height: 1.2;
-      color: var(--text);
+      margin-bottom: 18px;
+      line-height: 1.15;
+      color: #fff;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    }
+
+    .hero-content h1 em {
+      font-style: italic;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: var(--gold);
+    }
+
+    .hero-tagline {
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 40px;
+      font-weight: 400;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
     }
 
     .hero-content p {
@@ -109,6 +194,40 @@
       margin-left: auto;
       margin-right: auto;
       font-weight: 300;
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 44px;
+    }
+
+    .hero-stat {
+      border: 1px solid rgba(184,150,90,0.5);
+      background: rgba(14,17,22,0.35);
+      padding: 12px 22px;
+      font-size: 13px;
+      color: #fff;
+    }
+
+    .hero-stat strong {
+      color: var(--gold);
+      font-weight: 600;
+      margin-right: 6px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
     }
 
     .cta-primary {
@@ -178,7 +297,8 @@
 
     .about-stats {
       display: grid;
-      gap: 40px;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 24px;
     }
 
     .stat {
@@ -227,46 +347,348 @@
       line-height: 1.7;
     }
 
+    /* Vila overview */
+    .vila-media {
+      margin-top: 60px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .vila-aerial {
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vila-plan {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
     /* Gallery */
     .gallery {
       background: var(--bg);
     }
 
-    .gallery-grid {
+    .gallery-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 60px;
     }
 
-    .gallery-item {
-      aspect-ratio: 1;
+    .gallery-card {
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       background: var(--border);
       position: relative;
+      cursor: pointer;
     }
 
-    .gallery-item img {
+    .gallery-card img,
+    .gallery-card video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.4s ease;
+      pointer-events: none;
     }
 
-    .gallery-item:hover img {
+    .gallery-card:hover img,
+    .gallery-card:hover video {
       transform: scale(1.03);
     }
 
-    .gallery-label {
+    .gallery-card-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      pointer-events: none;
+    }
+
+    .gallery-card-label {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(0,0,0,0.5);
+      background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
       color: white;
-      padding: 16px;
-      font-size: 13px;
+      padding: 24px 16px 14px;
+      font-size: 14px;
       font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .gallery-card-specs {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #e8cfa0;
+      margin-top: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .gallery-card-count {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      opacity: 0.85;
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Reconhecimento */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .award {
+      border-top: 2px solid var(--gold);
+      padding-top: 16px;
+    }
+
+    .award h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .award p {
+      font-size: 12px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .ota-ratings {
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--bg-light);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .ota-stars {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .ota-stars div {
+      text-align: center;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .ota-stars span {
+      display: block;
+      font-size: 12px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .ota-note {
+      font-size: 13px;
+      color: var(--text-light);
+      max-width: 260px;
+      line-height: 1.6;
+    }
+
+    /* Investimento */
+    .investment {
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .investment .section-header h2,
+    .investment .section-header p {
+      color: #fff;
+    }
+
+    .investment .section-header p {
+      opacity: 0.7;
+    }
+
+    .price-block {
+      margin-top: 60px;
+      border: 1px solid rgba(184,150,90,0.4);
+      background: var(--dark-card);
+      padding: 48px;
+    }
+
+    .price-value {
+      color: var(--gold);
+      font-size: 56px;
+      font-weight: 600;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .price-exact {
+      font-size: 14px;
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+
+    .price-caption {
+      font-size: 13px;
+      opacity: 0.8;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 20px;
+    }
+
+    .invest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 48px;
+    }
+
+    .market-table {
+      display: grid;
+      gap: 0;
+    }
+
+    .market-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      font-size: 14px;
+    }
+
+    .market-row span:first-child {
+      opacity: 0.7;
+    }
+
+    .market-row span:last-child {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .checklist {
+      list-style: none;
+    }
+
+    .checklist li {
+      padding: 10px 0 10px 28px;
+      position: relative;
+      font-size: 14px;
+      opacity: 0.9;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .checklist li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 40px 20px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-title {
+      color: white;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .lightbox-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .lightbox-stage img,
+    .lightbox-stage video {
+      max-width: 100%;
+      max-height: 65vh;
+      display: block;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      color: white;
+      font-size: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      width: 44px;
+      height: 44px;
+      font-size: 20px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.3s;
+    }
+
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .lightbox-counter {
+      color: rgba(255,255,255,0.6);
+      font-size: 12px;
+      margin-top: 16px;
+      letter-spacing: 0.5px;
     }
 
     /* Performance */
@@ -432,14 +854,34 @@
 
       .hero-content h1 { font-size: 36px; }
       .hero-content p { font-size: 16px; }
+      .hero-stat { padding: 10px 16px; font-size: 12px; }
 
       .about-grid,
-      .highlights {
+      .highlights,
+      .awards-grid,
+      .invest-grid {
         grid-template-columns: 1fr;
       }
 
-      .gallery-grid {
-        grid-template-columns: 1fr;
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .price-value {
+        font-size: 40px;
+      }
+
+      .price-block {
+        padding: 28px;
+      }
+
+      .ota-ratings {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gallery-cards {
+        grid-template-columns: 1fr 1fr;
       }
 
       .timeline-item {
@@ -454,6 +896,17 @@
       .section-header h2 {
         font-size: 32px;
       }
+
+      .lightbox-stage {
+        gap: 8px;
+      }
+
+      .lightbox-prev,
+      .lightbox-next {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -462,13 +915,16 @@
   <header>
     <div class="header-inner">
       <div class="logo-group">
-        <img src="/logo.jpeg" alt="Casa de Perainda" class="logo-img">
-        <div class="logo-text">Perainda</div>
+        <img src="/logo.jpeg" alt="Casa de Perainda — Hotel Boutique Trancoso" class="logo-perainda">
+        <span class="logo-divider"></span>
+        <img src="/images/a10n-logo.png" alt="A10N Investimentos Imobiliários" class="logo-a10n">
       </div>
       <nav>
         <a href="#sobre">Sobre</a>
         <a href="#oportunidade">Oportunidade</a>
+        <a href="#vila">A Vila</a>
         <a href="#galeria">Galeria</a>
+        <a href="#investimento">Investimento</a>
         <a href="#agendamento">Contato</a>
       </nav>
     </div>
@@ -476,38 +932,93 @@
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-content">
-      <h1>Casa de Perainda</h1>
-      <p>Oportunidade Premium de Investimento em Hospedagem de Luxo</p>
-      <button class="cta-primary" onclick="document.getElementById('agendamento').scrollIntoView()">Converse Conosco</button>
+    <div class="hero-slides">
+      <div class="hero-slide" style="background-image:url('/images/Casa Mar/Casa Mar 02.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('/images/Casa Areia/Casa Areia 15.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('/images/Suíte Ancora/Suíte Ancora 01.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('/images/Casa Coral/Casa Coral 01.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('/images/Suíte Estrela do Mar/Suíte Estrela do Mar 01.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('/images/Casa Concha/Casa Concha 03.jpg')"></div>
     </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Trancoso · Bahia · Brasil</div>
+      <h1>Casa de <em>Perainda</em></h1>
+      <p class="hero-tagline">Hotel Boutique · Vila de Arte · Bairro João Vieira</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>6.048 m²</strong>Terreno</div>
+        <div class="hero-stat"><strong>14 UHs</strong>Em Operação</div>
+        <div class="hero-stat"><strong>5★</strong>Nas OTAs</div>
+        <div class="hero-stat"><strong>400 m</strong>Do Quadrado Histórico</div>
+      </div>
+      <button class="cta-primary" onclick="document.getElementById('oportunidade').scrollIntoView()">Conhecer a Oportunidade</button>
+    </div>
+    <div class="hero-scroll">Role para conhecer ↓</div>
   </section>
 
   <!-- Sobre -->
   <section class="about section" id="sobre">
     <div class="section-header">
-      <h2>Uma Propriedade Consolidada</h2>
-      <p>Desde 2016, a Casa de Perainda estabeleceu-se como referência em hospedagem luxury em Trancoso, com histórico comprovado de ocupação elevada e satisfação de hóspedes.</p>
+      <h2>Uma Propriedade que Já Nasceu Excepcional</h2>
+      <p>Um terreno unificado de 6.048 m², plano e com dois acessos independentes, no bairro mais valorizado de Trancoso fora da polígonal tombada — a 400 metros do Quadrado Histórico.</p>
     </div>
 
     <div class="about-grid">
       <div class="about-text">
-        <p>Localizada em Trancoso, Bahia, a propriedade combina 9 acomodações distintas em uma vila charmosa, reservada e aconchegante. Cada unidade (Casa Areia, Casa Concha, Casa Coral, Casa Mar, Casa Tartaruga, Suíte Ancora, Suíte Cavalo Marinho, Suíte Estrela do Mar e Suíte Marimbá) foi cuidadosamente projetada para oferecer conforto premium.</p>
-        <p>O modelo de negócio híbrido — operação hoteleira com unidades de temporada — proporciona diversificação de renda e reduz riscos de ocupação.</p>
+        <p>A Casa de Perainda nasceu em 2014 e, desde 2016, sob a gestão da IBMF Empreendimentos, passou por um amplo processo de reformas que criou uma arquitetura única — com muito charme, cuidado nos detalhes e um acervo artístico expressivo, construído ao longo de 8 anos de curadoria. Esculturas, pinturas, objetos de arte popular e design regional distribuídos por cada unidade transformam a experiência de habitar o lugar: arte que não se compra num leilão, se herda com a propriedade.</p>
+        <p>Hoje reúne 14 unidades habitacionais em operação — entre o hotel boutique original, casas independentes e suítes — além da residência própria dos proprietários, em um modelo híbrido que combina hospedagem hoteleira com potencial de expansão: 5.562 m² ainda disponíveis para novos projetos dentro do mesmo terreno.</p>
       </div>
 
       <div class="about-stats">
         <div class="stat">
-          <div class="stat-number">8 anos</div>
-          <div class="stat-label">De Operação Consolidada</div>
+          <div class="stat-number">6.048 m²</div>
+          <div class="stat-label">Terreno Unificado</div>
         </div>
         <div class="stat">
-          <div class="stat-number">9</div>
-          <div class="stat-label">Unidades Independentes</div>
+          <div class="stat-number">14+</div>
+          <div class="stat-label">UHs em Operação</div>
         </div>
         <div class="stat">
-          <div class="stat-number">Premium</div>
-          <div class="stat-label">Avaliações Consistentes</div>
+          <div class="stat-number">400 m</div>
+          <div class="stat-label">Do Quadrado Histórico</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">77%</div>
+          <div class="stat-label">Potencial Construtivo Inexplorado</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Destino -->
+  <section class="about section" id="destino" style="background: var(--bg);">
+    <div class="section-header">
+      <h2>Onde o Brasil Guarda seu Tesouro</h2>
+      <p>Fundado pelos jesuítas em 1583, Trancoso atravessou séculos de isolamento preservando o que nenhum outro destino do Brasil tem: uma alma autêntica.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Nos anos 1970, artistas e intelectuais descobriram o vilarejo. O encontro de culturas criou uma atmosfera única — arte, natureza e liberdade fundidas no entorno do Quadrado, tombado pelo IPHAN. Com o aeroporto de Porto Seguro nos anos 1990, hotéis de luxo, condomínios e residências de prestígio chegaram. Hoje é o único destino que combina sofisticação extrema com autenticidade histórica intocável.</p>
+        <p>A Casa de Perainda está no bairro João Vieira, o mais tranquilo e valorizado de Trancoso fora da polígonal tombada — terreno totalmente plano, com dois acessos independentes: Rua do Porto e Rua das Flores.</p>
+      </div>
+
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-number">400 m</div>
+          <div class="stat-label">Do Quadrado Histórico</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">1,2 km</div>
+          <div class="stat-label">Da Praia dos Nativos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">40 km</div>
+          <div class="stat-label">Do Aeroporto de Porto Seguro</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">1h40</div>
+          <div class="stat-label">São Paulo, Voo Direto</div>
         </div>
       </div>
     </div>
@@ -516,27 +1027,105 @@
   <!-- Oportunidade -->
   <section class="section" id="oportunidade">
     <div class="section-header">
-      <h2>Por Que Investir</h2>
-      <p>A Casa de Perainda representa uma oportunidade única de alocação de capital em ativo tangível com geração de fluxo de caixa comprovado.</p>
+      <h2>Por Que a Perainda é uma Oportunidade Única</h2>
+      <p>A Casa de Perainda representa uma oportunidade única de alocação de capital em ativo tangível, com marca, acervo e operação ativa inclusos na negociação.</p>
     </div>
 
     <div class="highlights">
       <div class="highlight">
-        <h3>Localização Estratégica</h3>
-        <p>Trancoso é dos destinos turísticos mais procurados do Brasil, com demanda constante de hospedagem premium.</p>
+        <h3>Porteira Fechada</h3>
+        <p>Mobiliário, acervo artístico, marca e operação inclusos na negociação.</p>
       </div>
       <div class="highlight">
-        <h3>Modelo Resiliente</h3>
-        <p>Combinação de operação hoteleira com aluguel de temporada reduz riscos e maximiza ocupação.</p>
+        <h3>Receita Imediata</h3>
+        <p>Arrendamento ativo até março/2028 — cash flow gerado desde o dia 1.</p>
       </div>
       <div class="highlight">
-        <h3>Gestão Profissional</h3>
-        <p>Equipes experientes e processos consolidados garantem operação eficiente e crescimento contínuo.</p>
+        <h3>Flexibilidade de Uso</h3>
+        <p>Residência privativa separada — habite com privacidade e alugue simultaneamente.</p>
       </div>
       <div class="highlight">
-        <h3>Segurança Jurídica</h3>
-        <p>Documentação completa: habite-se, certidões de regularização e todas as obrigações legais em dia.</p>
+        <h3>Expansão sem Nova Terra</h3>
+        <p>5.562 m² disponíveis para novos projetos dentro do mesmo terreno.</p>
       </div>
+      <div class="highlight">
+        <h3>Acervo Artístico Único</h3>
+        <p>8 anos de curadoria — diferencial inimitável incluído na venda.</p>
+      </div>
+      <div class="highlight">
+        <h3>Reconhecimento Global</h3>
+        <p>Condenest, Casa Vogue USA, GNT — patrimônio intangível valioso.</p>
+      </div>
+      <div class="highlight">
+        <h3>Docs. 100% Regularizada</h3>
+        <p>HABITE-SE de todas as 15 edificações, matrícula unificada, sem ônus.</p>
+      </div>
+      <div class="highlight">
+        <h3>Mercado em Expansão</h3>
+        <p>Trancoso: escassez de ativos premium e demanda internacional crescente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reconhecimento -->
+  <section class="section" id="reconhecimento" style="background: var(--bg-light);">
+    <div class="section-header">
+      <h2>O Hotel Boutique Mais Premiado de Trancoso</h2>
+      <p>Reconhecimento internacional que se soma à propriedade como patrimônio intangível.</p>
+    </div>
+
+    <div class="awards-grid">
+      <div class="award">
+        <h3>Condenest</h3>
+        <p>Melhor da América Latina — Hotéis Românticos</p>
+      </div>
+      <div class="award">
+        <h3>Circuito Elegante</h3>
+        <p>Seleção das melhores hospedagens do Brasil</p>
+      </div>
+      <div class="award">
+        <h3>Gold Stamp</h3>
+        <p>Certificação de excelência em hospitalidade</p>
+      </div>
+      <div class="award">
+        <h3>Casa Vogue USA</h3>
+        <p>Editorial em publicação americana de referência</p>
+      </div>
+      <div class="award">
+        <h3>GNT Hotéis Incríveis</h3>
+        <p>Programa de maior prestígio no segmento hoteleiro</p>
+      </div>
+    </div>
+
+    <div class="ota-ratings">
+      <div class="ota-stars">
+        <div>
+          <div class="stars">★★★★★</div>
+          <span>Booking.com</span>
+        </div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <span>Speedia</span>
+        </div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <span>TripAdvisor</span>
+        </div>
+      </div>
+      <p class="ota-note">Único hotel em Trancoso com nota máxima nas três plataformas.</p>
+    </div>
+  </section>
+
+  <!-- Vila -->
+  <section class="section" id="vila">
+    <div class="section-header">
+      <h2>Conheça a Vila</h2>
+      <p>Um terreno único em Trancoso reunindo hotel boutique, casas independentes, espaço de eventos e estrutura administrativa própria — planejado para operação hoteleira profissional.</p>
+    </div>
+
+    <div class="vila-media">
+      <img src="/images/Vila/Foto Aerea Vila de Perainda.jpg" alt="Foto aérea da Vila de Perainda" class="vila-aerial">
+      <img src="/images/Vila/Planta Vila de Perainda.jpg" alt="Planta baixa da Vila de Perainda com todas as construções" class="vila-plan">
     </div>
   </section>
 
@@ -544,76 +1133,98 @@
   <section class="gallery section" id="galeria">
     <div class="section-header">
       <h2>Conheça as Acomodações</h2>
+      <p>14 unidades habitacionais entre hotel boutique, casas independentes e suítes, cada uma com identidade própria. Clique em uma casa para ver todas as fotos e vídeos.</p>
     </div>
 
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="/images/Casa Areia/Casa Areia 15.jpg" alt="Casa Areia">
-        <div class="gallery-label">Casa Areia</div>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/Casa Coral/Casa Coral 01.jpg" alt="Casa Coral">
-        <div class="gallery-label">Casa Coral</div>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/Casa Mar/Casa Mar 01.jpg" alt="Casa Mar">
-        <div class="gallery-label">Casa Mar</div>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/Suíte Ancora/Suíte Ancora 01.jpg" alt="Suíte Ancora">
-        <div class="gallery-label">Suíte Ancora</div>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/Suíte Cavalo Marinho/Suíte Cavalo Marinho 01.jpg" alt="Suíte Cavalo Marinho">
-        <div class="gallery-label">Suíte Cavalo Marinho</div>
-      </div>
-      <div class="gallery-item">
-        <img src="/images/Suíte Estrela do Mar/Suíte Estrela do Mar 01.jpg" alt="Suíte Estrela do Mar">
-        <div class="gallery-label">Suíte Estrela do Mar</div>
-      </div>
-    </div>
+    <div class="gallery-cards" id="galleryCards"></div>
   </section>
+
+  <!-- Lightbox da galeria -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">&times;</button>
+    <div class="lightbox-title" id="lightboxTitle"></div>
+    <div class="lightbox-stage">
+      <button class="lightbox-prev" id="lightboxPrev" aria-label="Anterior">&#8249;</button>
+      <div id="lightboxMedia"></div>
+      <button class="lightbox-next" id="lightboxNext" aria-label="Próxima">&#8250;</button>
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
 
   <!-- Performance -->
   <section class="performance section">
     <div class="section-header">
-      <h2>Histórico de Crescimento</h2>
-      <p>Desde 2016, a propriedade demonstra crescimento consistente, com recuperação rápida pós-pandemia e movimento ascendente em 2022.</p>
+      <h2>Uma Obra de Arte que se Habita</h2>
+      <p>Uma trajetória de expansões sucessivas, sempre dentro do mesmo terreno unificado, transformando a Perainda de pousada de 4 suítes a vila hoteleira com 14 UHs em operação.</p>
     </div>
 
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-year">2016</div>
-        <div class="timeline-text">Hotel abre as portas em junho com período inicial de ajustes operacionais.</div>
+        <div class="timeline-text">Aquisição · 900 m². Abertura da pousada com 4 suítes boutique. Início do acervo artístico.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-year">2017–2019</div>
-        <div class="timeline-text">Consolidação operacional com manutenções programadas e expansão gradual de receitas.</div>
+        <div class="timeline-year">2018</div>
+        <div class="timeline-text">Expansão +3.400 m² com a aquisição do terreno vizinho. Construção da Casa Mar e do Galpão de Eventos.</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2020</div>
-        <div class="timeline-text">Fechamento temporário por Covid-19. Reabertura em agosto com adoção de novos protocolos.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-year">2021</div>
-        <div class="timeline-text">Ano pós-pandemia com novo gerente e retomada forte de operações sem fechamentos programados.</div>
+        <div class="timeline-text">Expansão +1.700 m². Construção da Casa Areia e da residência própria dos proprietários.</div>
       </div>
       <div class="timeline-item">
         <div class="timeline-year">2022</div>
-        <div class="timeline-text">Super aquecimento do setor de turismo com receitas em patamares históricos.</div>
+        <div class="timeline-text">Consolidação da Vila de Perainda. Prêmio Condenest Best of Latam.</div>
       </div>
       <div class="timeline-item">
-        <div class="timeline-year">2023+</div>
-        <div class="timeline-text">Mercado normalizando com oportunidades contínuas em turismo internacional.</div>
+        <div class="timeline-year">2024</div>
+        <div class="timeline-text">14 UHs em operação, nota máxima nas OTAs, gestão profissional consolidada.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investimento -->
+  <section class="section investment" id="investimento">
+    <div class="section-header">
+      <h2>Valor de Comercialização</h2>
+      <p>Ativo tangível, com marca, acervo artístico e operação ativa inclusos na negociação.</p>
+    </div>
+
+    <div class="price-block">
+      <div class="price-value">R$ 28M</div>
+      <div class="price-exact">R$ 28.000.000,00</div>
+      <div class="price-caption">Porteira fechada · Mobiliário + acervo inclusos · Operação ativa</div>
+    </div>
+
+    <div class="invest-grid">
+      <div>
+        <h3 style="font-size:14px; letter-spacing:1px; text-transform:uppercase; margin-bottom:20px; opacity:0.8;">Análise de Mercado</h3>
+        <div class="market-table">
+          <div class="market-row"><span>Valor por UH</span><span>R$ 2,0M</span></div>
+          <div class="market-row"><span>Valor por m² de terreno</span><span>R$ 4.630</span></div>
+          <div class="market-row"><span>Benchmark Trancoso</span><span>Médio-Alto ✓</span></div>
+          <div class="market-row"><span>Área construtiva livre</span><span>5.562 m²</span></div>
+          <div class="market-row"><span>Documentação</span><span>100% regular ✓</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 style="font-size:14px; letter-spacing:1px; text-transform:uppercase; margin-bottom:20px; opacity:0.8;">Regularidade Documental</h3>
+        <ul class="checklist">
+          <li>Matrícula unificada — 3 lotes em 1</li>
+          <li>HABITE-SE de todas as 15 construções</li>
+          <li>IPTU em dia · Sem ônus ou hipotecas</li>
+          <li>Registro: IBMF Empreendimentos LTDA</li>
+          <li>Arrendamento ativo até março/2028</li>
+          <li>Escrituras das 3 aquisições (2016, 2017, 2019)</li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta-block">
-    <h2>Pronto para Explorar Esta Oportunidade?</h2>
-    <p>Agende uma conversa com nosso time para conhecer detalhes do investimento</p>
-    <button class="cta-secondary" onclick="document.getElementById('agendamento').scrollIntoView()">Agendar Conversa</button>
+    <h2>Escreva um Novo Capítulo em Trancoso</h2>
+    <p>Visita técnica · Due diligence · Conversa confidencial</p>
+    <button class="cta-secondary" onclick="document.getElementById('agendamento').scrollIntoView()">Solicitar Reunião Exclusiva</button>
   </section>
 
   <!-- Contato -->
@@ -672,6 +1283,152 @@
     <p>&copy; 2026 Casa de Perainda. Todos os direitos reservados.</p>
     <p>Oportunidade exclusiva para clientes qualificados</p>
   </footer>
+
+  <script>
+    const accommodations = [
+      {
+        name: 'Casa Areia',
+        specs: '2 Suítes',
+        images: ['Casa Areia 15.jpg', 'Casa Areia 16.jpg', 'Casa Areia 17.jpg', 'Casa Areia 18.jpg', 'Casa Areia 19.jpg', 'Casa Areia 20.jpg', 'Casa Areia 21.jpg'],
+        videos: ['Casa Areia 01.mp4', 'Casa Areia 02.mp4', 'Casa Areia 03.mp4', 'Casa Areia 04.mp4', 'Casa Areia 05.mp4', 'Casa Areia 06.mp4', 'Casa Areia 07.mp4', 'Casa Areia 08.mp4', 'Casa Areia 09.mp4', 'Casa Areia 11.mp4', 'Casa Areia 12.mp4', 'Casa Areia 13.mp4', 'Casa Areia 14.mp4'],
+      },
+      {
+        name: 'Casa Canoa',
+        specs: '210 m² · 2 Quartos · Portas de Demolição',
+        images: ['Casa Canoa 01.jpg', 'Casa Canoa 02.jpg', 'Casa Canoa 03.jpg'],
+        videos: [],
+      },
+      {
+        name: 'Casa Concha',
+        specs: '58 m² · 1 Quarto · Arte Artesanal',
+        images: ['Casa Concha 01.jpg', 'Casa Concha 02.jpg', 'Casa Concha 03.jpg'],
+        videos: ['Casa Concha 01.mp4', 'Casa Concha 02.mp4'],
+      },
+      {
+        name: 'Casa Coral',
+        specs: '58 m² · 1 Quarto · Deck Privativo',
+        images: ['Casa Coral 01.jpg', 'Casa Coral 02.jpg', 'Casa Coral 03.jpg', 'Casa Coral 04.jpg'],
+        videos: ['Casa Coral 05.mp4', 'Casa Coral 06.mp4', 'Casa Coral 07.mp4', 'Casa Coral 08.mp4', 'Casa Coral 09.mp4', 'Casa Coral 10.mp4', 'Casa Coral 11.mp4'],
+      },
+      {
+        name: 'Casa Mar',
+        specs: '210 m² · 3 Quartos · Piscina Privativa',
+        images: ['Casa Mar 01.jpg', 'Casa Mar 02.jpg', 'Casa Mar 03.jpg', 'Casa Mar 04.jpg'],
+        videos: ['Casa Mar 05.mp4', 'Casa Mar 06.mp4'],
+      },
+      {
+        name: 'Casa Tartaruga',
+        specs: '',
+        images: [],
+        videos: ['Casa Tartaruga 01.mp4'],
+      },
+      {
+        name: 'Suíte Ancora',
+        specs: 'Suíte Boutique · Banheira de Imersão',
+        images: ['Suíte Ancora 01.jpg', 'Suíte Ancora 02.jpg', 'Suíte Ancora 03.jpg', 'Suíte Ancora 04.jpg', 'Suíte Ancora 05.jpg', 'Suíte Ancora 06.jpg', 'Suíte Ancora 07.jpg', 'Suíte Ancora 08.jpg', 'Suíte Ancora 09.jpg', 'Suíte Ancora 10.jpg', 'Suíte Ancora 11.jpg'],
+        videos: ['Suíte Ancora 12.mp4', 'Suíte Ancora 13.mp4'],
+      },
+      {
+        name: 'Suíte Cavalo Marinho',
+        specs: 'Suíte Boutique · Banheira de Imersão',
+        images: ['Suíte Cavalo Marinho 01.jpg', 'Suíte Cavalo Marinho 02.jpg', 'Suíte Cavalo Marinho 03.jpg', 'Suíte Cavalo Marinho 04.jpg'],
+        videos: ['Suíte Cavalo Marinho 05.mp4', 'Suíte Cavalo Marinho 06.mp4', 'Suíte Cavalo Marinho 07.mp4'],
+      },
+      {
+        name: 'Suíte Estrela do Mar',
+        specs: 'Suíte Boutique · Banheira de Imersão',
+        images: ['Suíte Estrela do Mar 01.jpg', 'Suíte Estrela do Mar 02.jpg', 'Suíte Estrela do Mar 03.jpg', 'Suíte Estrela do Mar 04.jpg', 'Suíte Estrela do Mar 05.jpg', 'Suíte Estrela do Mar 06.jpg'],
+        videos: ['Suíte Estrela do Mar 07.mp4', 'Suíte Estrela do Mar 08.mp4', 'Suíte Estrela do Mar 09.mp4', 'Suíte Estrela do Mar 10.mp4'],
+      },
+      {
+        name: 'Suíte Marimbá',
+        specs: 'Suíte Boutique · Banheira de Imersão',
+        images: [],
+        videos: ['Suíte Marimbá 01.mp4', 'Suíte Marimbá 02.mp4', 'Suíte Marimbá 03.mp4', 'Suíte Marimbá 04.mp4', 'Suíte Marimbá 05.mp4', 'Suíte Marimbá 06.mp4'],
+      },
+    ];
+
+    accommodations.forEach((acc) => {
+      acc.media = [
+        ...acc.images.map((file) => ({ type: 'image', file })),
+        ...acc.videos.map((file) => ({ type: 'video', file })),
+      ];
+    });
+
+    function mediaCountLabel(acc) {
+      const parts = [];
+      if (acc.images.length) parts.push(`${acc.images.length} foto${acc.images.length > 1 ? 's' : ''}`);
+      if (acc.videos.length) parts.push(`${acc.videos.length} vídeo${acc.videos.length > 1 ? 's' : ''}`);
+      return parts.join(' · ');
+    }
+
+    function mediaUrl(acc, item) {
+      const folder = item.type === 'image' ? 'images' : 'videos';
+      return `/${folder}/${encodeURIComponent(acc.name)}/${encodeURIComponent(item.file)}`;
+    }
+
+    const cardsContainer = document.getElementById('galleryCards');
+    accommodations.forEach((acc, accIndex) => {
+      const cover = acc.media[0];
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+      card.innerHTML = `
+        ${cover.type === 'image'
+          ? `<img src="${mediaUrl(acc, cover)}" alt="${acc.name}" loading="lazy">`
+          : `<video src="${mediaUrl(acc, cover)}" preload="metadata" muted playsinline></video><span class="gallery-card-play">&#9658;</span>`}
+        <div class="gallery-card-label">${acc.name}${acc.specs ? `<span class="gallery-card-specs">${acc.specs}</span>` : ''}<span class="gallery-card-count">${mediaCountLabel(acc)}</span></div>
+      `;
+      card.addEventListener('click', () => openLightbox(accIndex));
+      cardsContainer.appendChild(card);
+    });
+
+    let currentAcc = 0;
+    let currentIndex = 0;
+
+    const lightbox = document.getElementById('lightbox');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxMedia = document.getElementById('lightboxMedia');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+
+    function openLightbox(accIndex, index = 0) {
+      currentAcc = accIndex;
+      currentIndex = index;
+      renderLightbox();
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxMedia.innerHTML = '';
+    }
+
+    function renderLightbox() {
+      const acc = accommodations[currentAcc];
+      const item = acc.media[currentIndex];
+      lightboxTitle.textContent = acc.specs ? `${acc.name} — ${acc.specs}` : acc.name;
+      lightboxCounter.textContent = `${currentIndex + 1} / ${acc.media.length}`;
+      lightboxMedia.innerHTML = item.type === 'image'
+        ? `<img src="${mediaUrl(acc, item)}" alt="${acc.name}">`
+        : `<video src="${mediaUrl(acc, item)}" controls autoplay></video>`;
+    }
+
+    function step(delta) {
+      const acc = accommodations[currentAcc];
+      currentIndex = (currentIndex + delta + acc.media.length) % acc.media.length;
+      renderLightbox();
+    }
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrev').addEventListener('click', () => step(-1));
+    document.getElementById('lightboxNext').addEventListener('click', () => step(1));
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+  </script>
 
   <script>
     document.querySelector('form').addEventListener('submit', function(e) {
