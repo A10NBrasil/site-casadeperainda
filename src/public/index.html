@@ -915,9 +915,9 @@
   <header>
     <div class="header-inner">
       <div class="logo-group">
-        <img src="/logo.jpeg" alt="Casa de Perainda — Hotel Boutique Trancoso" class="logo-perainda">
+        <img src="logo.jpeg" alt="Casa de Perainda — Hotel Boutique Trancoso" class="logo-perainda">
         <span class="logo-divider"></span>
-        <img src="/images/a10n-logo.png" alt="A10N Investimentos Imobiliários" class="logo-a10n">
+        <img src="images/a10n-logo.png" alt="A10N Investimentos Imobiliários" class="logo-a10n">
       </div>
       <nav>
         <a href="#sobre">Sobre</a>
@@ -933,12 +933,12 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero-slides">
-      <div class="hero-slide" style="background-image:url('/images/Casa Mar/Casa Mar 02.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('/images/Casa Areia/Casa Areia 15.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('/images/Suíte Ancora/Suíte Ancora 01.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('/images/Casa Coral/Casa Coral 01.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('/images/Suíte Estrela do Mar/Suíte Estrela do Mar 01.jpg')"></div>
-      <div class="hero-slide" style="background-image:url('/images/Casa Concha/Casa Concha 03.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/Casa Mar/Casa Mar 02.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/Casa Areia/Casa Areia 15.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/Suíte Ancora/Suíte Ancora 01.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/Casa Coral/Casa Coral 01.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/Suíte Estrela do Mar/Suíte Estrela do Mar 01.jpg')"></div>
+      <div class="hero-slide" style="background-image:url('images/Casa Concha/Casa Concha 03.jpg')"></div>
     </div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -1124,8 +1124,8 @@
     </div>
 
     <div class="vila-media">
-      <img src="/images/Vila/Foto Aerea Vila de Perainda.jpg" alt="Foto aérea da Vila de Perainda" class="vila-aerial">
-      <img src="/images/Vila/Planta Vila de Perainda.jpg" alt="Planta baixa da Vila de Perainda com todas as construções" class="vila-plan">
+      <img src="images/Vila/Foto Aerea Vila de Perainda.jpg" alt="Foto aérea da Vila de Perainda" class="vila-aerial">
+      <img src="images/Vila/Planta Vila de Perainda.jpg" alt="Planta baixa da Vila de Perainda com todas as construções" class="vila-plan">
     </div>
   </section>
 
@@ -1364,7 +1364,7 @@
 
     function mediaUrl(acc, item) {
       const folder = item.type === 'image' ? 'images' : 'videos';
-      return `/${folder}/${encodeURIComponent(acc.name)}/${encodeURIComponent(item.file)}`;
+      return `${folder}/${encodeURIComponent(acc.name)}/${encodeURIComponent(item.file)}`;
     }
 
     const cardsContainer = document.getElementById('galleryCards');
